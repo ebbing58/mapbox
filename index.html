@@ -10,10 +10,19 @@
 		<div id='map' style='width: 1200px; height: 900px;'></div>
 		<script>
 		mapboxgl.accessToken = 'pk.eyJ1Ijoib2dyIiwiYSI6ImNraHhoYWc2dTB6Yjkyd21vNmdiZXZlMzUifQ.OSGdHHSwxA4Dk9XgAKlt2Q';
+
+		//URLparam
+		var arg = new Object;
+		var pair=location.search.substring(1).split('&');
+		for(var i=0;pair[i];i++) {
+    		var kv = pair[i].split('=');
+    		arg[kv[0]]=kv[1];
+		}
+
 		var map = new mapboxgl.Map({
 			container: 'map',
-		    center: [135.686659, 34.868643],
-	        zoom: 14,
+		    center: [arg["lng"], arg["lat"]],
+	        zoom: [arg["z"],
 			style: 'mapbox://styles/mapbox/streets-v11'
 		});
 		</script>
