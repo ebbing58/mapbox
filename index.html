@@ -21,7 +21,7 @@
 
 		var map = new mapboxgl.Map({
 			container: 'map',
-		    center: [arg.lng, arg.lat],
+		    center: [parseFloat(arg.lng), parseFloat(arg.lat)],
 	        zoom: 13,//arg.z,
 			style: 'mapbox://styles/mapbox/streets-v11'
 		});
