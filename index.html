@@ -11,7 +11,7 @@
 		<script>
 		mapboxgl.accessToken = 'pk.eyJ1Ijoib2dyIiwiYSI6ImNraHhoYWc2dTB6Yjkyd21vNmdiZXZlMzUifQ.OSGdHHSwxA4Dk9XgAKlt2Q';
 
-		//URLparam
+		//URLパラメータを取得
 		var arg = new Object;
 		var pair=location.search.substring(1).split('&');
 		for(var i=0;pair[i];i++) {
@@ -22,8 +22,8 @@
 		var map = new mapboxgl.Map({
 			container: 'map',
 		    center: [parseFloat(arg.lng), parseFloat(arg.lat)],
-	        zoom: 13,//arg.z,
-			style: 'mapbox://styles/mapbox/streets-v11'
+	        zoom: parseFloat(arg.z),
+			style: 'mapbox://styles/ogr/ckhw0alre0rwr19pamdmtegww'
 		});
 		</script>
 
