@@ -28,7 +28,11 @@
 		}else{
 			mapparam.center =  [135.651289, 34.814721];
 		}
-		if(arg.z){mapparam.zoom = parseFloat(arg.z);}
+		if(arg.z){
+			mapparam.zoom = parseFloat(arg.z);
+		}else{
+			mapparam.zoom = 15;
+		}
 
 		var map = new mapboxgl.Map(mapparam);
 
