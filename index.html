@@ -18,13 +18,16 @@
     		var kv = pair[i].split('=');
     		arg[kv[0]]=kv[1];
 		}
-
-		var map = new mapboxgl.Map({
+		
+		var mapparam = {
 			container: 'map',
-			style: 'mapbox://styles/ogr/ckhxk5gqa0qcu1aodro1glxcx',
-		    center: [parseFloat(arg.lng), parseFloat(arg.lat)],
-	        zoom: parseFloat(arg.z)
-		});
+			style: 'mapbox://styles/ogr/ckhxk5gqa0qcu1aodro1glxcx'
+		};
+		if(!arg.lng || !arg.lat){mapparam.center =  [parseFloat(arg.lng), parseFloat(arg.lat)];}
+		if(!arg.z){mapparam.z = parseFloat(arg.z);}
+
+		var map = new mapboxgl.Map(mapparam);
+
 		</script>
 
     </body>
