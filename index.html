@@ -23,8 +23,8 @@
 			container: 'map',
 			style: 'mapbox://styles/ogr/ckhxk5gqa0qcu1aodro1glxcx'
 		};
-		if(!arg.lng || !arg.lat){mapparam.center =  [parseFloat(arg.lng), parseFloat(arg.lat)];}
-		if(!arg.z){mapparam.z = parseFloat(arg.z);}
+		if(arg.lng && arg.lat){mapparam.center =  [parseFloat(arg.lng), parseFloat(arg.lat)];}
+		if(arg.z){mapparam.z = parseFloat(arg.z);}
 
 		var map = new mapboxgl.Map(mapparam);
 
