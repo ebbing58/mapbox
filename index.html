@@ -24,9 +24,16 @@
 			style: 'mapbox://styles/ogr/ckhxk5gqa0qcu1aodro1glxcx'
 		};
 		if(arg.lng && arg.lat){mapparam.center =  [parseFloat(arg.lng), parseFloat(arg.lat)];}
-		if(arg.z){mapparam.z = parseFloat(arg.z);}
+		if(arg.z){mapparam.zoom = parseFloat(arg.z);}
 
 		console.log(mapparam);
+
+//		var mapparam = {
+//			container: 'map',
+//			style: 'mapbox://styles/ogr/ckhxk5gqa0qcu1aodro1glxcx',
+//			center: [parseFloat(arg.lng), parseFloat(arg.lat)],
+//			
+//		};
 
 		var map = new mapboxgl.Map(mapparam);
 
