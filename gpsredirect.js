@@ -6,6 +6,7 @@ window.onload = function() {
 	    geo_location.getCurrentPosition(function (position){
 	        var coords = position.coords;
 //			location.href = 'https://ebbing58.github.io/mapbox/?lng=${position.coords.longitude}&lat=${position.coords.latitude}&z=13';
+			console.log(position.coords);
 			location.href = 'https://ebbing58.github.io/mapbox/?lng=' + position.coords.longitude + '&lat=' + position.coords.latitude + '&z=15';
 	    });
 	}
