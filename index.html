@@ -23,7 +23,11 @@
 			container: 'map',
 			style: 'mapbox://styles/ogr/ckhw0alre0rwr19pamdmtegww'
 		};
-		if(arg.lng && arg.lat){mapparam.center =  [parseFloat(arg.lng), parseFloat(arg.lat)];}
+		if(arg.lng && arg.lat){
+			mapparam.center =  [parseFloat(arg.lng), parseFloat(arg.lat)];
+		}else{
+			mapparam.center =  [135.651289, 34.814721];
+		}
 		if(arg.z){mapparam.zoom = parseFloat(arg.z);}
 
 		var map = new mapboxgl.Map(mapparam);
