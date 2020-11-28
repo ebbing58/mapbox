@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name":"樟葉北小学校"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [135.686659, 34.868643]	
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"樟葉小学校"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [135.683935, 34.86487]
+      }
+    }
+  ]
+}
