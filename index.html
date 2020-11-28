@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Mapbox URLRestrictTest</title>
-        <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-		<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-    </head>
-    <body>
-		<div id='map' style='width: 1200px; height: 1800px;'></div>
-		<script>
-			
-		//mapbox accesstoken(referer restricted)
-		mapboxgl.accessToken = 'pk.eyJ1Ijoib2dyIiwiYSI6ImNraHhoYWc2dTB6Yjkyd21vNmdiZXZlMzUifQ.OSGdHHSwxA4Dk9XgAKlt2Q';
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Mapbox URLRestrictTest</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="map" style="width: 1200px; height: 1800px"></div>
+    <button type="button" id="putLayer">レイヤ表示</button>
+    <script>
+      //mapbox accesstoken(referer restricted)
+      mapboxgl.accessToken =
+        "pk.eyJ1Ijoib2dyIiwiYSI6ImNraHhoYWc2dTB6Yjkyd21vNmdiZXZlMzUifQ.OSGdHHSwxA4Dk9XgAKlt2Q";
 
-		//get URL parameters
-		var arg = new Object;
-		var pair=location.search.substring(1).split('&');
-		for(var i=0;pair[i];i++) {
-    		var kv = pair[i].split('=');
-    		arg[kv[0]]=kv[1];
-		}
-		
-		//map param object
-		var mapparam = {
-			container: 'map',
-			style: 'mapbox://styles/ogr/ckhyuzfr226kf19mxij8tahwy'
-		};
+      //get URL parameters
+      var arg = new Object();
+      var pair = location.search.substring(1).split("&");
+      for (var i = 0; pair[i]; i++) {
+        var kv = pair[i].split("=");
+        arg[kv[0]] = kv[1];
+      }
 
-		//set mapparam from URL parameters
-		if(arg.lng && arg.lat){
-			mapparam.center =  [parseFloat(arg.lng), parseFloat(arg.lat)];
-		}else{
-			//default
-			mapparam.center =  [135.651289, 34.814721];
-		}
-		if(arg.z){
-			mapparam.zoom = parseFloat(arg.z);
-		}else{
-			//default
-			mapparam.zoom = 15;
-		}
-		
-		// map instanciate
-		var map = new mapboxgl.Map(mapparam);
+      //map param object
+      var mapparam = {
+        container: "map",
+        style: "mapbox://styles/ogr/ckhyuzfr226kf19mxij8tahwy",
+      };
 
-		</script>
+      //set mapparam from URL parameters
+      if (arg.lng && arg.lat) {
+        mapparam.center = [parseFloat(arg.lng), parseFloat(arg.lat)];
+      } else {
+        //default
+        mapparam.center = [135.651289, 34.814721];
+      }
+      if (arg.z) {
+        mapparam.zoom = parseFloat(arg.z);
+      } else {
+        //default
+        mapparam.zoom = 15;
+      }
 
-    </body>
+      // map instanciate
+      var map = new mapboxgl.Map(mapparam);
+
+      document
+        .getElementById("putLayer")
+        .addEventListener("click", function () {
+          let source;
+          let request = new XMLHttpRequest();
+          request.open(
+            "GET",
+            "https://drive.google.com/file/d/1U2auKrNHoaycdwnS40vmA1eO_TdyWKi-/view?usp=sharing"
+          );
+          request.responseType = "text";
+          request.onload = function () {
+            source = JSON.parse(request.response);
+            map.addLayer({
+              id: "shelters",
+              type: "symbol",
+              source: {
+                type: "geojson",
+                data: source,
+              },
+              layout: {
+                "icon-image": "restaurant-15",
+                "icon-allow-overlap": true,
+			  }
+			});
+          };
+          request.send();
+        });
+    </script>
+  </body>
 </html>
