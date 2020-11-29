@@ -8,9 +8,13 @@
       href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
       rel="stylesheet"
     />
+    <style>
+      body { margin: 0; padding: 0; }
+      #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
   </head>
   <body>
-    <div id="map" style="width: 1200px; height: 1800px"></div>
+    <div id="map"></div>
     <button type="button" id="putLayer">レイヤ表示</button>
     <script>
       //mapbox accesstoken(referer restricted)
@@ -33,21 +37,7 @@
         center: (arg.lng && arg.lat) ? [parseFloat(arg.lng), parseFloat(arg.lat)] : [135.651289, 34.814721],
         zoom: arg.z ? parseFloat(arg.z) : 15
       };
-/*
-      //URLパラメータを元に、緯度経度・表示縮尺を設定
-      if (arg.lng && arg.lat) {
-        mapparam.center = [parseFloat(arg.lng), parseFloat(arg.lat)];
-      } else {
-        //緯度経度の指定がない場合
-        mapparam.center = [135.651289, 34.814721];
-      }
-      if (arg.z) {
-        mapparam.zoom = parseFloat(arg.z);
-      } else {
-        //表示縮尺の指定がない場合
-        mapparam.zoom = 15;
-      }
-*/
+
       // Mapbox地図のインスタンス化
       var map = new mapboxgl.Map(mapparam);
 
@@ -55,6 +45,8 @@
         .getElementById("putLayer")
         .addEventListener("click", function () {
           let source;
+
+          /*
           let request = new XMLHttpRequest();
           request.open(
             "GET",
@@ -77,6 +69,7 @@
             });
           };
           request.send();
+          */
         });
     </script>
   </body>
