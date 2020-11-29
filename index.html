@@ -83,6 +83,18 @@
               },
             ],
           };
+          map.addLayer({
+              id: "shelters",
+              type: "symbol",
+              source: {
+                type: "geojson",
+                data: source,
+              },
+              layout: {
+                "icon-image": "restaurant-15",
+                "icon-allow-overlap": true,
+              },
+            });
 
           /*
           let request = new XMLHttpRequest();
