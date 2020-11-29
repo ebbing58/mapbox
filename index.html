@@ -25,27 +25,30 @@
         arg[kv[0]] = kv[1];
       }
 
-      //map param object
+      //Mapbox地図のパラメータ
+      //URLパラメータを元に、緯度経度・表示縮尺を設定
       var mapparam = {
         container: "map",
         style: "mapbox://styles/ogr/ckhyuzfr226kf19mxij8tahwy",
+        center: (arg.lng && arg.lat) ? [parseFloat(arg.lng), parseFloat(arg.lat)] : [135.651289, 34.814721],
+        zoom: arg.z ? parseFloat(arg.z) : 15
       };
-
-      //set mapparam from URL parameters
+/*
+      //URLパラメータを元に、緯度経度・表示縮尺を設定
       if (arg.lng && arg.lat) {
         mapparam.center = [parseFloat(arg.lng), parseFloat(arg.lat)];
       } else {
-        //default
+        //緯度経度の指定がない場合
         mapparam.center = [135.651289, 34.814721];
       }
       if (arg.z) {
         mapparam.zoom = parseFloat(arg.z);
       } else {
-        //default
+        //表示縮尺の指定がない場合
         mapparam.zoom = 15;
       }
-
-      // map instanciate
+*/
+      // Mapbox地図のインスタンス化
       var map = new mapboxgl.Map(mapparam);
 
       document
@@ -70,8 +73,8 @@
               layout: {
                 "icon-image": "restaurant-15",
                 "icon-allow-overlap": true,
-			  }
-			});
+              },
+            });
           };
           request.send();
         });
