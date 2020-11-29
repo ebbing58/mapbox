@@ -23,7 +23,7 @@
   </head>
   <body>
     <style>
-      .putLayer {
+      .buttoncontainer {
         font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
         font-weight: 600;
         position: absolute;
@@ -37,7 +37,9 @@
     </style>
 
     <div id="map"></div>
-    <button type="button" id="putLayer">レイヤ表示</button>
+    <div id="buttoncontainer">
+      <button type="button" id="putLayer">レイヤ表示</button>
+    </div>
     <script>
       //mapbox accesstoken(referer restricted)
       mapboxgl.accessToken =
