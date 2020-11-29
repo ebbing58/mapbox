@@ -20,11 +20,15 @@
         height: 90%;
         width: 100%;
       }
+      #putlayer {
+        position: absolute;
+        top: 90%;
+        height: 10%;
+        width: 100%;     
+      }
     </style>
   </head>
   <body>
-
-
     <div id="map"></div>
     <button type="button" id="putLayer">レイヤ表示</button>
     <script>
@@ -58,7 +62,27 @@
       document
         .getElementById("putLayer")
         .addEventListener("click", function () {
-          let source;
+          let source = {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                properties: { name: "樟葉北小学校", icon: "attention" },
+                geometry: {
+                  type: "Point",
+                  coordinates: [135.686659, 34.868643],
+                },
+              },
+              {
+                type: "Feature",
+                properties: { name: "樟葉小学校", icon: "home" },
+                geometry: {
+                  type: "Point",
+                  coordinates: [135.683935, 34.86487],
+                },
+              },
+            ],
+          };
 
           /*
           let request = new XMLHttpRequest();
