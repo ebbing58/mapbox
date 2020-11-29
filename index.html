@@ -20,17 +20,19 @@
         height: 90%;
         width: 100%;
       }
-      #putlayer {
+      #buttoncon {
         position: absolute;
         top: 90%;
         height: 10%;
-        width: 100%;     
+        width: 100%;
       }
     </style>
   </head>
   <body>
     <div id="map"></div>
-    <button type="button" id="putLayer">レイヤ表示</button>
+    <div id="buttoncon">
+      <button type="button" id="putLayer">レイヤ表示</button>
+    </div>
     <script>
       //mapbox accesstoken(referer restricted)
       mapboxgl.accessToken =
@@ -84,17 +86,17 @@
             ],
           };
           map.addLayer({
-              id: "shelters",
-              type: "symbol",
-              source: {
-                type: "geojson",
-                data: source,
-              },
-              layout: {
-                "icon-image": "restaurant-15",
-                "icon-allow-overlap": true,
-              },
-            });
+            id: "shelters",
+            type: "symbol",
+            source: {
+              type: "geojson",
+              data: source,
+            },
+            layout: {
+              "icon-image": "restaurant-15",
+              "icon-allow-overlap": true,
+            },
+          });
 
           /*
           let request = new XMLHttpRequest();
