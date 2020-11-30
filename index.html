@@ -64,7 +64,8 @@
       document
         .getElementById("putLayer")
         .addEventListener("click", function () {
-          let source = {
+          /*       
+            let source = {
             type: "FeatureCollection",
             features: [
               {
@@ -101,12 +102,11 @@
               "text-field" : ["get","name"]
             },
           });
-
-          /*
+*/
           let request = new XMLHttpRequest();
           request.open(
             "GET",
-            "https://drive.google.com/file/d/1U2auKrNHoaycdwnS40vmA1eO_TdyWKi-/view?usp=sharing"
+            "https://script.google.com/macros/s/AKfycbxkoiEIHQzTVcsR0bf1DPVAVTa7qscmCKA1tBqHDfzch9tSbvM/exec"
           );
           request.responseType = "text";
           request.onload = function () {
@@ -119,13 +119,16 @@
                 data: source,
               },
               layout: {
-                "icon-image": "restaurant-15",
+                "icon-image": ["get", "stateicon"],
+                "icon-size": 0.2,
                 "icon-allow-overlap": true,
-              },
+                "text-allow-overlap": true,
+                //              "text-color" : "#f820c6",
+                "text-field": ["get", "name"],
+              }
             });
           };
           request.send();
-          */
         });
     </script>
   </body>
