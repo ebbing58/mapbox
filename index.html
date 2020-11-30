@@ -61,6 +61,7 @@
       // Mapbox地図のインスタンス化
       var map = new mapboxgl.Map(mapparam);
 
+      // 押下時の処理
       document
         .getElementById("putLayer")
         .addEventListener("click", function () {
@@ -119,7 +120,7 @@
                 data: source,
               },
               layout: {
-                "icon-image": ["get", "stateicon"],
+                "icon-image": ["get", "statusIcon"],
                 "icon-size": 0.2,
                 "icon-allow-overlap": true,
                 "text-allow-overlap": true,
